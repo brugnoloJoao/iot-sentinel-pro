@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SensorWatch — Telemetria Industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>⬡ IoT Sentinel Pro </h1>
+    <span class="subtitulo">TELEMETRIA INDUSTRIAL</span>
+  </header>
+
+  <div class="layout">
+
+    <!-- FORMULÁRIO -->
+    <aside>
+      <h2>NOVO SENSOR</h2>
+
+      <label>IDENTIFICAÇÃO</label>
+      <input type="text" id="inputNome" placeholder="Ex: Termopar Forno 01" onblur="this.value = this.value.trim()" />
+
+      <label>CATEGORIA</label>
+      <select id="selectTipo" onchange="atualizarUnidade()">
+        <option value="">— selecionar —</option>
+        <option value="TEMPERATURA">🌡 TEMPERATURA</option>
+        <option value="PRESSÃO">⊙ PRESSÃO</option>
+        <option value="UMIDADE">💧 UMIDADE</option>
+      </select>
+
+      <label>VALOR <span id="unidadeLabel" class="unidade">—</span></label>
+      <input type="number" id="inputValor" placeholder="0.00" step="0.1" onkeyup="verificarCritico()" />
+      <small id="avisoValor"></small>
+
+      <button onclick="adicionarSensor()">+ REGISTRAR</button>
+      <button class="btn-limpar" onclick="limparTudo()">✕ LIMPAR TUDO</button>
+
+      <!-- CONTADORES -->
+      <div class="contadores">
+        <div class="contador">
+          <strong id="ctTotal">0</strong>
+          <span>TOTAL</span>
+        </div>
+        <div class="contador critico-box">
+          <strong id="ctCritico">0</strong>
+          <span>CRÍTICOS</span>
+        </div>
+        <div class="contador">
+          <strong id="ctNormal">0</strong>
+          <span>NORMAIS</span>
+        </div>
+      </div>
+
+      <!-- LIMITES DE REFERÊNCIA -->
+      <div class="limites">
+        <p class="limites-titulo">LIMITES OPERACIONAIS</p>
+        <p>🌡 Temp. &gt; <b>50 °C</b> → CRÍTICO</p>
+        <p>⊙ Pressão &gt; <b>100 Bar</b> → CRÍTICO</p>
+        <p>💧 Umidade &lt;<b>30%</b> ou &gt;<b>80%</b> → CRÍTICO</p>
+      </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main>
+      <!-- CARDS -->
+      <section>
+        <h2 class="secao-titulo">SENSORES EM CAMPO</h2>
+        <div id="grid"></div>
+      </section>
+
+      <!-- GRÁFICO -->
+      <section class="secao-grafico">
+        <h2 class="secao-titulo">MÉDIAS POR CATEGORIA</h2>
+        <div class="grafico-wrapper">
+          <canvas id="grafico"></canvas>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
