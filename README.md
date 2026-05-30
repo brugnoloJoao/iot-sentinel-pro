@@ -2,14 +2,14 @@
 
 # README.md
 
-```markdown
+
 # SensorWatch 🌡⊙💧
 
 SensorWatch é uma aplicação web de monitoramento, análise estatística e gerenciamento de alertas de telemetria industrial em tempo real. O sistema é capaz de processar dados vindos de sensores de **Temperatura**, **Pressão** e **Umidade**, avaliando dinamicamente o estado de conformidade operacional de cada dispositivo e gerando indicadores analíticos (médias industriais) através de gráficos interativos.
 
 Este projeto foi desenvolvido com foco em arquitetura limpa, utilizando os paradigmas de **Programação Orientada a Objetos (POO)** e **Programação Funcional** nativos do JavaScript moderno (ES6+).
 
----
+
 
 ## 🚀 Funcionalidades Chave
 
